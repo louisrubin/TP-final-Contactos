@@ -66,9 +66,8 @@ public class Contactos extends JFrame {
                 x += 80;
             }
             
-            panel.add(item);
+            panel.add(item);    // en cada vuelta del FOR se agrega esa boton al JPanel
            
-            
         }
         
     }
@@ -132,19 +131,13 @@ public class Contactos extends JFrame {
             item.setFont( new Font("Yu Gothic UI", 0 , 18 ) );
             item.setSize(110, 30);
             
+            
+            panel.add(item);    // en cada vuelta del FOR se agrega esa estiqueta al JPanel
+            
+            
             y += 60;
         }
         
-      
-        
-        panel.add(labelTitulo);   
-        panel.add(labelDNI);    
-        panel.add(labelNombre);    
-        panel.add(labelApellido);    
-        panel.add(labelDireccion);    
-        panel.add(labelTelefono);    
-        panel.add(labelFechaNAC);     
-        panel.add(labelIndice);       
     }
     
     
