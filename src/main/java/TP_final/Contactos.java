@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
@@ -24,6 +25,7 @@ public class Contactos extends JFrame {
         todosLosPaneles();
         todasLasEtiquetas();  // llamo y ejecuto al metodo que creé mas abajo
         todosLosBotones();
+        todosLosTextFields();
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);    // el programa se cierra bien haciendo clic en la X de la ventana    
     }
@@ -73,6 +75,59 @@ public class Contactos extends JFrame {
     }
     
     
+    
+    private void todosLosTextFields() {
+        // campos para ingresar texto
+        JTextField campoDNI = new JTextField();
+        JTextField campoNombre = new JTextField();
+        JTextField campoApellido = new JTextField();
+        JTextField campoDireccion = new JTextField();
+        JTextField campoTelefono = new JTextField();
+        JTextField campoFechaNac = new JTextField();
+        
+        JTextField campoIndice = new JTextField();
+        
+        
+        JTextField [] listaCampos = {
+            // lista de campos 
+            campoDNI,
+            campoNombre, 
+            campoApellido, 
+            campoDireccion, 
+            campoTelefono, 
+            campoFechaNac,
+            campoIndice
+        };
+    
+        int x = 150;
+        int y = 125;
+        int ancho = 170;
+        int alto = 25;
+        
+        for ( JTextField   item   :  listaCampos  ){
+            
+            if (  item  == campoDireccion ){
+                x = 455;
+                y = 125;
+            }
+            
+            if ( item == campoIndice) {
+                x = 325;
+                y = 400;
+                ancho = 30;
+                alto = 30;
+                
+                item.setFont( new Font ("arial", 1, 25) );
+            }
+            
+            item.setBounds(  x,   y,  ancho, alto);
+            
+            y += 60;
+            panel.add(item);
+        }
+          
+    }
+    
     private void todasLasEtiquetas() {
 
         JLabel labelTitulo = new JLabel("AGENDA ELECTRÓNICA", SwingConstants.CENTER);
@@ -98,42 +153,43 @@ public class Contactos extends JFrame {
             labelIndice
         };
         
-        labelTitulo.setBounds(0, 0, 700, 65);
+        labelTitulo.setBounds(0, 20, 700, 65);
         labelTitulo.setFont(  new Font("Yu Gothic UI", 1 , 25 ) );
         labelTitulo.setForeground(Color.WHITE);      // cambio el color de la letra a blanco
         
         labelTitulo.setOpaque(true);         // permite poder cambiar el color del fondo
-        labelTitulo.setBackground(Color.BLACK);  // cambio el color fondo negro
+        labelTitulo.setBackground(Color.GRAY);  // cambio el color fondo negro
         
         
         
         int x = 55;
         int y = 120;
+        int ancho = 50;
+        int alto = 20;
         
         for (  JLabel  item  :  listaDeLabels  ) {
             
-            
             if (item == labelIndice ) {
-                x = 180;
+                x = 240;
                 y = 400;
             }
             
             
             if (item == labelDireccion){
                 // imprime la otra fila de etiquetas "apellido" -> "direccion"
-                x = 335;
+                x = 345;
                 y = 120;
             }
             
             
-            item.setBounds(x, y, 50, 20);
+            item.setBounds(  x,   y, ancho, alto);
             item.setForeground(Color.white);
             item.setFont( new Font("Yu Gothic UI", 0 , 18 ) );
             item.setSize(110, 30);
             
             
+            panel.add(labelTitulo);
             panel.add(item);    // en cada vuelta del FOR se agrega esa estiqueta al JPanel
-            
             
             y += 60;
         }
