@@ -6,5 +6,6 @@ public class Main {
         Contactos agenda = new Contactos();     // creo una instancia de la clase contactos
         
         agenda.setVisible(true);
+        
     }
 }
