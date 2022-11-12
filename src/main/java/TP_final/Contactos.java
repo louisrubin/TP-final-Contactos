@@ -3,6 +3,7 @@ package TP_final;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,7 +11,7 @@ import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
     
-    public JPanel panel = new JPanel();     // panel principal de todos
+    public JPanel panel = new JPanel();     // creacion del panel llamado "panel"
     
     
     public Contactos() {
@@ -22,7 +23,7 @@ public class Contactos extends JFrame {
         
         todosLosPaneles();
         todasLasEtiquetas();  // llamo y ejecuto al metodo que creé mas abajo
-        //PanelContactos();
+        todosLosBotones();
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);    // el programa se cierra bien haciendo clic en la X de la ventana    
     }
@@ -30,8 +31,7 @@ public class Contactos extends JFrame {
     
     
     private void todosLosPaneles() {
-        // creacion de un metodo para paneles
-        //JPanel panelTitulo = new JPanel();    // creacion del panel llamado "panel"
+        // creacion de un metodo para paneles  
         panel.setLayout(null);
         
         panel.setBackground(Color.DARK_GRAY);   // fondo gris oscuro
@@ -39,6 +39,39 @@ public class Contactos extends JFrame {
         
     }
     
+    
+    private void todosLosBotones(){
+        
+        JButton butonAtras = new JButton("<<");
+        JButton butonGrabar = new JButton("GRABAR");
+        JButton butonSiguiente = new JButton(">>");
+        
+        JButton[] listaBotones = {
+            butonAtras,
+            butonGrabar,
+            butonSiguiente
+        };
+              
+        int x = 210;
+        int y = 320;
+        
+        for (JButton  item  :  listaBotones ){
+            
+            if( item == butonGrabar ){
+                item.setBounds(x, y, 100, 50);
+                x += 120;
+            } 
+            else {
+                item.setBounds(x, y, 60, 50);
+                x += 80;
+            }
+            
+            panel.add(item);
+           
+            
+        }
+        
+    }
     
     
     private void todasLasEtiquetas() {
