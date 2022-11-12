@@ -51,6 +51,8 @@ public class Contactos extends JFrame {
         JLabel labelDireccion = new JLabel("Direccion  : ");
         JLabel labelTelefono = new JLabel("Telefono  : ");
         JLabel labelFechaNAC = new JLabel("Fecha Nac.  : ");
+        
+        JLabel labelIndice = new JLabel ("INDICE  : ");
            
         
         JLabel[] listaDeLabels = {
@@ -60,7 +62,8 @@ public class Contactos extends JFrame {
             labelApellido,
             labelDireccion,
             labelTelefono,
-            labelFechaNAC
+            labelFechaNAC,
+            labelIndice
         };
         
         labelTitulo.setBounds(0, 0, 700, 65);
@@ -77,26 +80,27 @@ public class Contactos extends JFrame {
         
         for (  JLabel  item  :  listaDeLabels  ) {
             
+            
+            if (item == labelIndice ) {
+                x = 180;
+                y = 400;
+            }
+            
+            
+            if (item == labelDireccion){
+                // imprime la otra fila de etiquetas "apellido" -> "direccion"
+                x = 335;
+                y = 120;
+            }
+            
+            
             item.setBounds(x, y, 50, 20);
             item.setForeground(Color.white);
             item.setFont( new Font("Yu Gothic UI", 0 , 18 ) );
             item.setSize(110, 30);
             
             y += 60;
-            
-            if (item == labelApellido){
-                // imprime la otra fila de etiquetas "apellido" -> "direccion"
-                x = 335;
-                y = 120;
-            }
         }
-        
-        
-        //labelRegistro.setBounds(0, 65, 700, 45);
-        //labelRegistro.setOpaque(true);
-        //labelRegistro.setBackground(Color.LIGHT_GRAY);
-        //labelRegistro.setForeground(Color.black);
-        //labelRegistro.setFont( new Font("Yu Gothic UI", 1, 20));
         
       
         
@@ -106,38 +110,10 @@ public class Contactos extends JFrame {
         panel.add(labelApellido);    
         panel.add(labelDireccion);    
         panel.add(labelTelefono);    
-        panel.add(labelFechaNAC);        
+        panel.add(labelFechaNAC);     
+        panel.add(labelIndice);       
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    private void PanelContactos() {
-        JPanel panelContactos = new JPanel();
-        panelContactos.setLayout(null);
-        panelContactos.setBounds(65, 65, 700, 65);
-        
-        panelContactos.setBackground(Color.green);   // fondo gris oscuro
-        this.getContentPane().add(panelContactos);   // agrego el panel sobre la ventana
-        
-        
-        JLabel registro = new JLabel("REGISTRO", SwingConstants.CENTER);
-        registro.setBounds(0, 0, 700, 65);
-        registro.setFont(  new Font("impact", 0 , 25 ) );
-        registro.setForeground(Color.black);      // cambio el color de la letra a blanco
-        
-        registro.setOpaque(true);         // permite poder cambiar el color del fondo
-        registro.setBackground(Color.white);  // cambio el color fondo negro
-        
-        
-        panelContactos.add(registro); 
-        
-    }
     
 }
