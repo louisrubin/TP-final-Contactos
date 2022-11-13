@@ -14,8 +14,10 @@ import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
     
-    private String[][] vector = new String[9][6];   // tamaño del vector:  9 filas y 6 columnas
-    private int indice = 0;
+    private int cantidadAlumnos = 10;
+    
+    private String[][] vector = new String[cantidadAlumnos - 1][6];   // tamaño del vector:  9 filas y 6 columnas
+    private int indice = 3;
     
     public JTextField campoDNI = new JTextField();      // campos de texto GLOBALES para todas los métodos
     public JTextField campoNombre = new JTextField();
@@ -102,6 +104,12 @@ public class Contactos extends JFrame {
         
         
         
+        
+        
+        /* 
+                ACCIONES DE LOS BOTONES
+        */
+        
         ActionListener accionGrabar = new ActionListener() {
             // al hacer clic en "grabar" ejecuta todo este programa que guarda los datos en el vector
             
@@ -118,14 +126,46 @@ public class Contactos extends JFrame {
                         }
                     }
                     
-                    for( int column = 0; column <= 5; column++){
-                        System.out.println(" DATOS ENCONTRADOS: ");
+                    System.out.println("STORED DATA: \n");
+                    for( int column = 0; column < 6; column++){
                         System.out.println(  vector[indice][column]  );
                     }
             }
         };
         
+        
+        ActionListener accionAtras = new ActionListener() {
+            // accion del boton ATRAS
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if ( indice > 0 ){
+                    indice--;
+                    campoIndice.setText(  String.valueOf(indice)  );
+                }
+            }
+            
+        };
+        
+        
+        
+        ActionListener accionSiguiente = new ActionListener() {
+            // accion del boton ATRAS
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if ( indice < cantidadAlumnos ){
+                    indice++;
+                    campoIndice.setText(  String.valueOf(indice)  );
+                }
+            }
+            
+        };
+        
+        
+        butonAtras.addActionListener(accionAtras);
         butonGrabar.addActionListener(accionGrabar);    // accion al hacer clic en el boton "grabar"
+        butonSiguiente.addActionListener(accionSiguiente);
         
         
         
@@ -157,7 +197,7 @@ public class Contactos extends JFrame {
                 ancho = 30;
                 alto = 30;
                 
-                item.setFont( new Font ("arial", 1, 25) );
+                item.setFont( new Font ("arial", 1, 22) );
             }
             
             item.setBounds(  x,   y,  ancho, alto);
