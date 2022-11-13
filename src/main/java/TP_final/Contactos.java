@@ -3,6 +3,8 @@ package TP_final;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +13,31 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
+    
+    private String[][] vector = new String[9][6];   // tamaño del vector:  9 filas y 6 columnas
+    private int indice = 0;
+    
+    public JTextField campoDNI = new JTextField();      // campos de texto GLOBALES para todas los métodos
+    public JTextField campoNombre = new JTextField();
+    public JTextField campoApellido = new JTextField();
+    public JTextField campoDireccion = new JTextField();
+    public JTextField campoTelefono = new JTextField();
+    public JTextField campoFechaNac = new JTextField();
+        
+    public JTextField campoIndice = new JTextField(String.valueOf(indice) );
+        
+    
+    public JTextField [] listaCamposTexto = {
+        // lista de campos 
+        campoDNI,
+        campoNombre, 
+        campoApellido, 
+        campoDireccion, 
+        campoTelefono, 
+        campoFechaNac,
+        campoIndice
+    };
+    
     
     public JPanel panel = new JPanel();     // creacion del panel llamado "panel"
     
@@ -54,17 +81,18 @@ public class Contactos extends JFrame {
             butonSiguiente
         };
               
-        int x = 210;
-        int y = 320;
+        
+        int x = 210;    // posición en horizontal
+        int y = 320;    // posición en vertical
         
         for (JButton  item  :  listaBotones ){
             
             if( item == butonGrabar ){
-                item.setBounds(x, y, 100, 50);
+                item.setBounds(  x,  y, 100, 50);
                 x += 120;
             } 
             else {
-                item.setBounds(x, y, 60, 50);
+                item.setBounds(  x,  y, 60, 50);
                 x += 80;
             }
             
@@ -72,39 +100,51 @@ public class Contactos extends JFrame {
            
         }
         
+        
+        
+        ActionListener accionGrabar = new ActionListener() {
+            // al hacer clic en "grabar" ejecuta todo este programa que guarda los datos en el vector
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                    int colum = 0;
+                    for (JTextField  item   :  listaCamposTexto ) {
+                      
+                        if ( item != campoIndice ){
+                            // si es diferente a "campoIndice" hace lo siguiente, si es igual no hace nada
+                            vector[indice][colum] =  item.getText();
+                            colum ++;
+                        }
+                    }
+                    
+                    for( int column = 0; column <= 5; column++){
+                        System.out.println(" DATOS ENCONTRADOS: ");
+                        System.out.println(  vector[indice][column]  );
+                    }
+            }
+        };
+        
+        butonGrabar.addActionListener(accionGrabar);    // accion al hacer clic en el boton "grabar"
+        
+        
+        
+        
+        
     }
     
     
     
     private void todosLosTextFields() {
         // campos para ingresar texto
-        JTextField campoDNI = new JTextField();
-        JTextField campoNombre = new JTextField();
-        JTextField campoApellido = new JTextField();
-        JTextField campoDireccion = new JTextField();
-        JTextField campoTelefono = new JTextField();
-        JTextField campoFechaNac = new JTextField();
         
-        JTextField campoIndice = new JTextField();
-        
-        
-        JTextField [] listaCampos = {
-            // lista de campos 
-            campoDNI,
-            campoNombre, 
-            campoApellido, 
-            campoDireccion, 
-            campoTelefono, 
-            campoFechaNac,
-            campoIndice
-        };
     
-        int x = 150;
-        int y = 125;
+        int x = 150;    // posición en horizontal
+        int y = 125;    // posición en vertical
         int ancho = 170;
         int alto = 25;
         
-        for ( JTextField   item   :  listaCampos  ){
+        for ( JTextField   item   :  listaCamposTexto  ){
             
             if (  item  == campoDireccion ){
                 x = 455;
@@ -162,8 +202,8 @@ public class Contactos extends JFrame {
         
         
         
-        int x = 55;
-        int y = 120;
+        int x = 55;     // posición en horizontal
+        int y = 120;    // posición en vertical
         int ancho = 50;
         int alto = 20;
         
