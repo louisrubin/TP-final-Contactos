@@ -1,4 +1,4 @@
-# TP-final-Contactos
+# TRABAJO PRÁCTICO FINAL - Java :argentina:
 Me pidieron realizar un trabajo práctico como proyecto final en Java.
 
 ![Capture1](https://user-images.githubusercontent.com/72027738/201445948-1d201b8d-4d64-48c5-9c67-fcc55fa7db75.PNG)
@@ -7,4 +7,18 @@ Me pidieron realizar un trabajo práctico como proyecto final en Java.
 
 ![Capture3](https://user-images.githubusercontent.com/72027738/201445961-dbd96a1e-800d-47c2-b75f-098d7ac479f8.PNG)
 
-# :D
+
+
+# Dev Specs :computer:
+
+
+> ***Product Version:*** Apache NetBeans IDE 15
+
+> ***Java:*** 17.0.5
+
+> ***System:*** Windows 10
+
+
+
+
+###### 11/12/2022 (November 12)
