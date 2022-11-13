@@ -16,7 +16,6 @@ public class Contactos extends JFrame {
     
     public int cantidadAlumnos = 10;
     public int cantidadColumns = 6;
-    
     public String[][] vector = new String[cantidadAlumnos][cantidadColumns];   // tamaño del vector:  9 filas y 6 columnas
     public int indice = 0;     // indice inicial
     
@@ -123,9 +122,6 @@ public class Contactos extends JFrame {
         }
         
         
-        
-        
-        
         /* 
                 ACCIONES DE LOS BOTONES
         */
@@ -210,12 +206,10 @@ public class Contactos extends JFrame {
         int ancho = 170;
         int alto = 25;
         
+        int yo = 1;
+        
         for ( JTextField   item   :  listaCamposTexto  ){
             // este FOR coloca todos los campos de textos en la ventana
-            if (  item  == campoDireccion ){
-                x = 455;
-                y = 125;
-            }
             
             if ( item == campoIndice) {
                 x = 325;
@@ -230,8 +224,24 @@ public class Contactos extends JFrame {
             
             item.setBounds(  x,   y,  ancho, alto);
             
-            y += 60;
             panel.add(item);
+            
+            
+            if ( yo % 2 == 0 ) {
+                /* si es PAR
+                vueltas para colocar los INPUTS correctamente:
+                                                                 dni - nombre
+                                                                 apellido - direccion
+                */
+                x = 150;
+                y += 60;
+                
+            // si es impar:
+            } else {
+                x = 455;
+            }
+            
+            yo ++;     // vueltas + 1
         }
         
           
@@ -239,16 +249,16 @@ public class Contactos extends JFrame {
     
     private void todasLasEtiquetas() {
 
-        JLabel labelTitulo = new JLabel("AGENDA ELECTRÓNICA", SwingConstants.CENTER);
+        JLabel labelTitulo = new JLabel("Registro de Alumnos", SwingConstants.CENTER);
         
         JLabel labelDNI = new JLabel("DNI  : ");
         JLabel labelNombre = new JLabel("Nombre  : ");
         JLabel labelApellido = new JLabel("Apellido  : ");
-        JLabel labelDireccion = new JLabel("Direccion  : ");
-        JLabel labelTelefono = new JLabel("Telefono  : ");
+        JLabel labelDireccion = new JLabel("Dirección  : ");
+        JLabel labelTelefono = new JLabel("Teléfono  : ");
         JLabel labelFechaNAC = new JLabel("Fecha Nac.  : ");
         
-        JLabel labelIndice = new JLabel ("INDICE  : ");
+        JLabel labelIndice = new JLabel ("Índice  : ");
            
         
         JLabel[] listaDeLabels = {
@@ -274,11 +284,12 @@ public class Contactos extends JFrame {
         
         int x = 55;     // posición en horizontal
         int y = 120;    // posición en vertical
+        int yo = 1;
         
         for (  JLabel  item  :  listaDeLabels  ) {
             int ancho = 110;
             int alto = 30;
-            Color colorSeleccionado = Color.white;
+            Color colorSeleccionado = Color.white;      // color de letra default
             
             if ( item == labelGuardado ) {
                 x = 275; 
@@ -293,23 +304,30 @@ public class Contactos extends JFrame {
             }
             
             
-            if ( item == labelDireccion){
-                // imprime la otra fila de etiquetas "apellido" -> "direccion"
-                x = 345;
-                y = 120;
-            }
-            
-            
             item.setBounds(  x,   y, ancho, alto);
             item.setForeground( colorSeleccionado);
             item.setFont( new Font("Yu Gothic UI", 0 , 18 ) );
-            item.setSize(  ancho,  alto);
             
             
             panel.add(labelTitulo);
             panel.add(item);    // en cada vuelta del FOR se agrega esa estiqueta al JPanel
             
-            y += 60;
+            
+            if ( yo % 2 == 0 ) {
+                /* si es PAR
+                vueltas para colocar los LABELS correctamente:
+                                                                 dni - nombre
+                                                                 apellido - direccion
+                */
+                x = 55;
+                y += 60;
+                
+            // si es impar:
+            } else {
+                x = 345;
+            }
+            
+            yo ++;
         }
         
     }
