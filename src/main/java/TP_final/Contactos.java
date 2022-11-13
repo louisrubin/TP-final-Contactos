@@ -14,10 +14,11 @@ import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
     
-    private int cantidadAlumnos = 10;
+    public int cantidadAlumnos = 10;
+    public int cantidadColumns = 6;
     
-    private String[][] vector = new String[cantidadAlumnos - 1][6];   // tamaño del vector:  9 filas y 6 columnas
-    private int indice = 3;
+    public String[][] vector = new String[cantidadAlumnos][cantidadColumns];   // tamaño del vector:  9 filas y 6 columnas
+    public int indice = 0;     // indice inicial
     
     public JTextField campoDNI = new JTextField();      // campos de texto GLOBALES para todas los métodos
     public JTextField campoNombre = new JTextField();
@@ -40,11 +41,14 @@ public class Contactos extends JFrame {
         campoIndice
     };
     
+    public JLabel labelGuardado = new JLabel();     // label de "Datos Guardados" en formato GLOBAL
+    
     
     public JPanel panel = new JPanel();     // creacion del panel llamado "panel"
     
     
     public Contactos() {
+        // este método crea la ventana y los paneles
         setSize(700,500);   //  un tamaño al programa
         setTitle("Agenda Trabajo Final");
         
@@ -59,6 +63,22 @@ public class Contactos extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);    // el programa se cierra bien haciendo clic en la X de la ventana    
     }
     
+    
+    private void MostrarTodosLosDatos(){
+        // este método busca y muestra los datos almacenados en el vector
+        
+       
+        int colum = 0;
+        for ( JTextField   item   :  listaCamposTexto  ) {
+                      
+            if ( item != campoIndice ){
+                // si es diferente a "campoIndice" hace lo siguiente, si es igual no hace nada
+                item.setText( vector[indice][colum] );
+                colum ++;
+            }
+        }
+        
+    }
     
     
     private void todosLosPaneles() {
@@ -126,10 +146,12 @@ public class Contactos extends JFrame {
                         }
                     }
                     
-                    System.out.println("STORED DATA: \n");
+                    System.out.println("STORED DATA: ");
                     for( int column = 0; column < 6; column++){
                         System.out.println(  vector[indice][column]  );
                     }
+                    
+                    labelGuardado.setText("datos guardados");
             }
         };
         
@@ -142,6 +164,8 @@ public class Contactos extends JFrame {
                 if ( indice > 0 ){
                     indice--;
                     campoIndice.setText(  String.valueOf(indice)  );
+                    MostrarTodosLosDatos();
+                    labelGuardado.setText("");
                 }
             }
             
@@ -154,9 +178,11 @@ public class Contactos extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                if ( indice < cantidadAlumnos ){
+                if ( indice < cantidadAlumnos -1 ){
                     indice++;
                     campoIndice.setText(  String.valueOf(indice)  );
+                    MostrarTodosLosDatos();
+                    labelGuardado.setText("");
                 }
             }
             
@@ -185,7 +211,7 @@ public class Contactos extends JFrame {
         int alto = 25;
         
         for ( JTextField   item   :  listaCamposTexto  ){
-            
+            // este FOR coloca todos los campos de textos en la ventana
             if (  item  == campoDireccion ){
                 x = 455;
                 y = 125;
@@ -205,6 +231,7 @@ public class Contactos extends JFrame {
             y += 60;
             panel.add(item);
         }
+        
           
     }
     
@@ -230,6 +257,7 @@ public class Contactos extends JFrame {
             labelDireccion,
             labelTelefono,
             labelFechaNAC,
+            labelGuardado,
             labelIndice
         };
         
@@ -244,18 +272,26 @@ public class Contactos extends JFrame {
         
         int x = 55;     // posición en horizontal
         int y = 120;    // posición en vertical
-        int ancho = 50;
-        int alto = 20;
         
         for (  JLabel  item  :  listaDeLabels  ) {
+            int ancho = 110;
+            int alto = 30;
+            Color colorSeleccionado = Color.white;
             
-            if (item == labelIndice ) {
+            if ( item == labelGuardado ) {
+                x = 275; 
+                y = 280;
+                ancho = 450;
+                colorSeleccionado = Color.GREEN;
+            }
+            
+            if ( item == labelIndice ) {
                 x = 240;
                 y = 400;
             }
             
             
-            if (item == labelDireccion){
+            if ( item == labelDireccion){
                 // imprime la otra fila de etiquetas "apellido" -> "direccion"
                 x = 345;
                 y = 120;
@@ -263,9 +299,9 @@ public class Contactos extends JFrame {
             
             
             item.setBounds(  x,   y, ancho, alto);
-            item.setForeground(Color.white);
+            item.setForeground( colorSeleccionado);
             item.setFont( new Font("Yu Gothic UI", 0 , 18 ) );
-            item.setSize(110, 30);
+            item.setSize(  ancho,  alto);
             
             
             panel.add(labelTitulo);
