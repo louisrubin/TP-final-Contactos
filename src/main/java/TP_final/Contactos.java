@@ -224,6 +224,8 @@ public class Contactos extends JFrame {
                 alto = 30;
                 
                 item.setFont( new Font ("arial", 1, 22) );
+                item.setEditable(false);
+                item.setHorizontalAlignment(SwingConstants.CENTER);
             }
             
             item.setBounds(  x,   y,  ancho, alto);
