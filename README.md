@@ -1,6 +1,12 @@
 # TRABAJO PRÁCTICO FINAL - Java :argentina:
 Me pidieron realizar un trabajo práctico como proyecto final en Java.
 
+# Progreso :fast_forward:
+![progress-video48](https://user-images.githubusercontent.com/72027738/201634388-758a604a-8ef6-4ea5-9bbb-45fdf6fb1dfd.gif)
+
+
+# Consigna :memo:
+
 ![Capture1](https://user-images.githubusercontent.com/72027738/201445948-1d201b8d-4d64-48c5-9c67-fcc55fa7db75.PNG)
 
 ![Capture2](https://user-images.githubusercontent.com/72027738/201446024-5075aca4-0dee-46e5-9624-4c412d213972.PNG)
@@ -21,4 +27,4 @@ Me pidieron realizar un trabajo práctico como proyecto final en Java.
 
 
 
-###### 11/12/2022 (November 12)
+###### 11/14/2022 (November 14)
