@@ -14,8 +14,13 @@ import javax.swing.SwingConstants;
 
 public class Contactos extends JFrame {
     
+    
+    public JPanel panel = new JPanel();     // creacion del panel llamado "panel"
+    public MainMenu panelMenu = new MainMenu();
+    
     public int cantidadAlumnos = 10;
     public int cantidadColumns = 6;
+    
     public String[][] vector = new String[cantidadAlumnos][cantidadColumns];   // tamaño del vector:  9 filas y 6 columnas
     public int indice = 0;     // indice inicial
     
@@ -43,9 +48,6 @@ public class Contactos extends JFrame {
     public JLabel labelGuardado = new JLabel();     // label de "Datos Guardados" en formato GLOBAL
     
     
-    public JPanel panel = new JPanel();     // creacion del panel llamado "panel"
-    
-    
     public Contactos() {
         // este método crea la ventana y los paneles
         setSize(700,500);   //  un tamaño al programa
@@ -60,6 +62,16 @@ public class Contactos extends JFrame {
         todosLosTextFields();
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);    // el programa se cierra bien haciendo clic en la X de la ventana    
+    }
+    
+    private void todosLosPaneles() {
+        // creacion de un metodo para paneles  
+        panel.setLayout(null);
+        //panelMenu.setLayout(null);
+        
+        panel.setBackground(Color.DARK_GRAY);   // fondo gris oscuro
+        this.getContentPane().add(panel);   // agrego el panel sobre la ventana
+        
     }
     
     
@@ -80,14 +92,6 @@ public class Contactos extends JFrame {
     }
     
     
-    private void todosLosPaneles() {
-        // creacion de un metodo para paneles  
-        panel.setLayout(null);
-        
-        panel.setBackground(Color.DARK_GRAY);   // fondo gris oscuro
-        this.getContentPane().add(panel);   // agrego el panel sobre la ventana
-        
-    }
     
     
     private void todosLosBotones(){
@@ -331,7 +335,6 @@ public class Contactos extends JFrame {
         }
         
     }
-    
     
     
 }
